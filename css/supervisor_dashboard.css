@@ -1,0 +1,197 @@
+        /* === GENERAL STYLES === */
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        
+        /* === HEADER STYLES === */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #eee;
+            margin-bottom: 30px;
+        }
+        
+        .nav-links a {
+            margin-left: 15px;
+            text-decoration: none;
+            color: #007bff;
+            padding: 8px 15px;
+            border: 1px solid #007bff;
+            border-radius: 4px;
+        }
+        
+        .nav-links a:hover {
+            background: #007bff;
+            color: white;
+        }
+        
+        /* === FORM STYLES === */
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        form {
+            background: #f9f9f9;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 30px;
+        }
+        
+        input[type="text"], 
+        input[type="date"], 
+        select, 
+        textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        
+        textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        
+        input[type="submit"] {
+            background: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        
+        input[type="submit"]:hover {
+            background: #218838;
+        }
+        
+        /* === TABLE STYLES === */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #f8f9fa;
+            font-weight: bold;
+        }
+        
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+        
+        /* === STATUS BADGES === */
+        .status-pending { color: #ffc107; font-weight: bold; }
+        .status-in-progress { color: #17a2b8; font-weight: bold; }
+        .status-completed { color: #28a745; font-weight: bold; }
+        .status-reviewed { color: #6f42c1; font-weight: bold; }
+        
+        /* === MESSAGE STYLES === */
+        .no-data {
+            text-align: center;
+            color: #6c757d;
+            font-style: italic;
+            padding: 20px;
+        }
+
+
+        /* === NAVIGATION LINKS STYLING === */
+.nav-container {
+    display: flex;
+    gap: 15px; /* Space between links */
+    margin: 20px 0;
+    flex-wrap: wrap; /* Allows wrapping on smaller screens */
+}
+
+.nav-link {
+    display: inline-block;
+    text-decoration: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    text-align: center;
+    min-width: 120px;
+}
+
+/* Specific styles for each link type */
+.nav-link.logout {
+    background-color: #dc3545;
+    color: white;
+    border: 2px solid #dc3545;
+}
+
+.nav-link.add-intern {
+    background-color: #28a745;
+    color: white;
+    border: 2px solid #28a745;
+}
+
+.nav-link.dashboard {
+    background-color: #007bff;
+    color: white;
+    border: 2px solid #007bff;
+}
+
+/* Hover effects */
+.nav-link.logout:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+    transform: translateY(-2px);
+}
+
+.nav-link.add-intern:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+    transform: translateY(-2px);
+}
+
+.nav-link.dashboard:hover {
+    background-color: #0069d9;
+    border-color: #0062cc;
+    transform: translateY(-2px);
+}
+
+/* Active state */
+.nav-link:active {
+    transform: translateY(0);
+}
+
+/* Optional: Add icons using pseudo-elements */
+.nav-link.logout::before {
+    content: "🚪 ";
+}
+
+.nav-link.add-intern::before {
+    content: "➕ ";
+}
+
+.nav-link.dashboard::before {
+    content: "📊 ";
+}
