@@ -195,3 +195,25 @@
 .nav-link.dashboard::before {
     content: "📊 ";
 }
+
+/* Responsive design for mobile */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column; /* Stack links vertically on mobile */
+        gap: 10px;
+    }
+    
+    .nav-link {
+        width: 100%; /* Full width on mobile */
+        min-width: auto;
+    }
+    
+    .header {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .header h1 {
+        margin-bottom: 15px;
+    }
+}

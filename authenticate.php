@@ -23,8 +23,9 @@ if ($result->num_rows > 0) {
         header('Location: supervisor_dashboard.php');
         exit(); // STOP script after a redirect
     } else {
-        // Password was incorrect
-        die("Invalid password. <a href='login.php'>Go back to login</a>");
+        // Password was incorrect - REDIRECT WITH ERROR
+        header('Location: login.php?error=1');
+        exit();
     }
 } 
 
@@ -43,13 +44,16 @@ else {
             header('Location: intern_dashboard.php');
             exit();
         } else {
-            die("Invalid password. <a href='login.php'>Go back to login</a>");
+            // Password was incorrect - REDIRECT WITH ERROR
+            header('Location: login.php?error=1');
+            exit();
         }
     } 
 
-    // 5. If email is not found in ANY table
+    // 5. If email is not found in ANY table - REDIRECT WITH ERROR
     else {
-        die("No account found with that email address. <a href='login.php'>Go back to login</a>");
+        header('Location: login.php?error=1');
+        exit();
     }
 }
 
