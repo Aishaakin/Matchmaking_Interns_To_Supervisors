@@ -19,7 +19,7 @@ $projects = $conn->query("SELECT * FROM projects WHERE assigned_by=" . $_SESSION
     <link rel="stylesheet" href="css/supervisor_dashboard.css">
 </head>
 <body>
-    <h1>Welcome, <?php echo $_SESSION['name']; ?>!</h1>
+    <h1>Welcome,<?php echo $_SESSION['name']; ?></h1>
 
  <div class="nav-container">
     <a href="add_intern.php" class="nav-link add-intern">Add New Intern</a>
@@ -32,7 +32,7 @@ $projects = $conn->query("SELECT * FROM projects WHERE assigned_by=" . $_SESSION
         <select name="intern_id" required>
             <option value="">Select an Intern</option>
             <?php
-            // POPULATE THE DROPDOWN WITH INTERNS
+            // drowndrops to show list of interns available
             if ($interns->num_rows > 0) {
                 while($intern = $interns->fetch_assoc()) {
                     echo '<option value="' . $intern['id'] . '">' . $intern['name'] . '</option>';
@@ -59,7 +59,7 @@ $projects = $conn->query("SELECT * FROM projects WHERE assigned_by=" . $_SESSION
                 <th>Status</th>
             </tr>
             <?php while($project = $projects->fetch_assoc()): 
-                // Get intern name for this project
+                // get intern name for this project
                 $intern_result = $conn->query("SELECT name FROM interns WHERE id=" . $project['assigned_to']);
                 $intern_name = $intern_result->fetch_assoc()['name'];
             ?>

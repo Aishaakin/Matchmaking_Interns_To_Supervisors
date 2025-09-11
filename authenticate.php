@@ -2,34 +2,34 @@
 session_start();
 include('config.php');
 
-// 1. Get data from the login form
+//Get  the data of user from the login form
 $email = $_POST['email'];
 $password = $_POST['password'];
 
-// 2. Check in the supervisors table first
+// Check supervisors table first
 $sql = "SELECT * FROM supervisors WHERE email='$email'";
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
-    // A supervisor with that email exists
-    $supervisor = $result->fetch_assoc(); // Get their data
+// check supervisor with that email exits
+    $supervisor = $result->fetch_assoc(); 
 
-    // 3. Verify the submitted password against the stored HASHED password
+// Verify the submitted password match the hashed password
     if (password_verify($password, $supervisor['password'])) {
-        // Password is correct! Log the supervisor in.
+        // login supervisor if the password match
         $_SESSION['user_id'] = $supervisor['id'];
         $_SESSION['role'] = 'supervisor';
         $_SESSION['name'] = $supervisor['name'];
         header('Location: supervisor_dashboard.php');
-        exit(); // STOP script after a redirect
+        exit(); 
     } else {
-        // Password was incorrect - REDIRECT WITH ERROR
+        // if the password doesn't not exit, show an error and redirect user to login page
         header('Location: login.php?error=1');
         exit();
     }
 } 
 
-// 4. If not found in supervisors, check in the interns table
+// If supervisor is not found,check the interns table
 else {
     $sql = "SELECT * FROM interns WHERE email='$email'";
     $result = $conn->query($sql);
@@ -37,20 +37,19 @@ else {
     if ($result->num_rows > 0) {
         $intern = $result->fetch_assoc();
         if (password_verify($password, $intern['password'])) {
-            // Password is correct! Log the intern in.
+            // if the intern password is correct direct to intern_dashboard
             $_SESSION['user_id'] = $intern['id'];
             $_SESSION['role'] = 'intern';
             $_SESSION['name'] = $intern['name'];
             header('Location: intern_dashboard.php');
             exit();
         } else {
-            // Password was incorrect - REDIRECT WITH ERROR
+            // if password incorrect redirect user to login page
             header('Location: login.php?error=1');
             exit();
         }
     } 
-
-    // 5. If email is not found in ANY table - REDIRECT WITH ERROR
+// if email is not correct show an error
     else {
         header('Location: login.php?error=1');
         exit();

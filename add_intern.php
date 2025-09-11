@@ -73,7 +73,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         </form>
         
         <div class="password-note">
-            💡 <strong>Note:</strong> This will be the intern's initial password. They can change it later.
+        <strong>Note:</strong> This is the intern initial password. They can change it later.
         </div>
     </div>
 </body>

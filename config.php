@@ -1,7 +1,7 @@
 <?php
 $servername = "localhost";
-$username = "root"; // Default XAMPP username
-$password = "";     // Default XAMPP password is blank
+$username = "root"; // Default password of username
+$password = "";     // The default xampp password is blank
 $dbname = "intern_tracker_db"; // Your database name
 
 // Create connection
