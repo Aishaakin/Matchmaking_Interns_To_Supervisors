@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($stmt->execute()) {
         $message = "Intern added successfully!";
     } else {
-        $error = "Error adding intern: " . $conn->error;
+        $error = "Error adding intern, please try again " . $conn->error;
     }
 }
 ?>

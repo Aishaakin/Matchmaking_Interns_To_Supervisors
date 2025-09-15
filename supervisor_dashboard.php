@@ -3,10 +3,10 @@ session_start();
 if($_SESSION['role'] != 'supervisor') { header('Location: login.php'); exit(); }
 include('config.php');
 
-// Fetch list of interns
+// Fetch list of interns from that supervisor with the ID
 $interns = $conn->query("SELECT * FROM interns WHERE supervisor_id=" . $_SESSION['user_id']);
 
-// Fetch projects
+// Fetch projects made by that supervisor
 $projects = $conn->query("SELECT * FROM projects WHERE assigned_by=" . $_SESSION['user_id']);
 ?>
 <!DOCTYPE html>
@@ -27,31 +27,31 @@ $projects = $conn->query("SELECT * FROM projects WHERE assigned_by=" . $_SESSION
     <a href="logout.php" class="nav-link logout">Logout</a>
 </div>
 
-    <h2>Assign a New Project To Intern</h2>
+    <h2>Assign a New Project To An Intern</h2>
     <form action="assign_project.php" method="post">
         <select name="intern_id" required>
             <option value="">Select an Intern</option>
             <?php
-            // drowndrops to show list of interns available
+            // drowndrops of interns names
             if ($interns->num_rows > 0) {
                 while($intern = $interns->fetch_assoc()) {
                     echo '<option value="' . $intern['id'] . '">' . $intern['name'] . '</option>';
                 }
             } else {
-                echo '<option value="">No interns assigned to you</option>';
+                echo '<option value="">No interns assigned to you yet </option>';
             }
             ?>
-        </select><br><br>
+        </select><br>
         
         <input type="text" name="title" placeholder="Project Title" required><br><br>
-        <textarea name="description" placeholder="Project Description"></textarea><br><br>
+        <textarea name="description" placeholder="Project Description" required></textarea><br><br>
         <input type="date" name="deadline" required><br><br>
         <input type="submit" value="Assign Project">
     </form>
 
     <h2>Current Projects</h2>
     <?php if ($projects->num_rows > 0): ?>
-        <table border="1" cellpadding="10">
+        <table border="3" cellpadding="15">
             <tr>
                 <th>Project Title</th>
                 <th>Assigned To</th>
